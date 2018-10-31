@@ -41,15 +41,19 @@ void test_stack() {
 void test_queue() {
 
     Queue<int> q;
-    q.push(3);
-//    cout << q;
-    q.push(4);
-    q.push(6);
-    q.push(7);
-    cout << q;
-//    q.pop();
-//    cout << q;
-    //push algo is faulty
-
-//    cout << q.top();
+    
+    for (int i = 0; i < 10; i++) {
+        q.push(i);
+    }
+    
+    cout << q << endl;
+    q.pop();
+    cout << "after pop " << q << endl;
+    cout << "get top " << q.top() << endl;
+    
+    while (!q.empty()) {
+        q.pop();
+    }
+    cout << "after total pop: " << q << endl;
+//    cout << "get top " << q.top() << endl;
 }

@@ -67,7 +67,6 @@ public:
 
         // if the queue is empty, create a new node of capacity 1
         if (walker == rear) {
-            cout << "hey";
             insert_head(front, item);
             //            walker->_next = rear;
         } else {
@@ -77,18 +76,10 @@ public:
             }
             // insert item there
             insert_after(front, walker, item);
-            //            while(walker->_next != nullptr) {
-            //                walker = walker->_next;
         }
         //queue size enlarges by 1
         this->size++;
     }
-
-
-
-
-
-
 
     //pop items from the front
 
