@@ -50,10 +50,10 @@ void test_queue() {
     q.pop();
     cout << "after pop " << q << endl;
     cout << "get top " << q.top() << endl;
-    
+//    
     while (!q.empty()) {
         q.pop();
     }
     cout << "after total pop: " << q << endl;
-//    cout << "get top " << q.top() << endl;
+//    cout << "get top " << q.top() << endl; //assertion failed test!
 }

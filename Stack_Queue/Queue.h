@@ -11,6 +11,7 @@ using namespace std;
 template <typename T>
 
 class Queue {
+    
 public:
 
     //constructor
@@ -22,36 +23,37 @@ public:
     }
 
     //copy constructor
-
+    //NOT YET TESTED
     Queue(const Queue& other) {
-        this->front = other.front;
-        this->rear = other.rear;
-        this->size = other.size;
+        this->front = copy_list(other->front);
+        this->rear = LastNode(this->front);
+        this->size = other->size;
     }
 
     //destructor
 
     ~Queue() {
-        // IS THIS RIGHT?
-        delete[] front;
-        delete[] rear;
+        // Delete the list, set front and rear to null
+        clear_list(front);
+        front = nullptr;
+        rear = nullptr;
     }
 
     //assignment operator
-
+    //NOT YET TESTED
     Queue<T>& operator=(const Queue<T>& rhs) {
         //self-check
         if (*this == rhs) {
             return *this;
         }
         //clean up
-        delete[] this->front;
-        delete[] this->rear;
+        clear_list(front);
+//        clear_list(rear);
 
         //re-instantiate lhs attributes
-        this->front = rhs.front;
-        this->rear = rhs.rear;
-        this->size = rhs.size;
+        this->front = copy_list(rhs.front);
+        this->rear = LastNode(this->front);
+        this->size = rhs->size;
 
         //copy junk over
 
@@ -85,7 +87,7 @@ public:
 
     T pop() {
         // cannot pop an empty queue
-        assert(front != nullptr);
+        assert(front != rear);
 
         //decrement the queue size
         size--;
@@ -95,7 +97,7 @@ public:
 
     T top() {
         // cannot check top of an empty queue
-        assert(front != nullptr);
+        assert(front != rear);
 
         return front->_item;
     }
