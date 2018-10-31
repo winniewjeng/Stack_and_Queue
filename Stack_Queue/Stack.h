@@ -15,18 +15,18 @@ public:
     }
 
     void push(const T& item) {
-        cout << "item is " << item << endl;
         size++;
         stack.insert_head(item);
-        stack.Print();
     }
 
     T pop() {
+        assert (stack.Begin()!=nullptr);
         size--;
         return stack.Delete(stack.Begin());
     }
 
     T top() {
+        assert (stack.Begin()!=nullptr);
         return stack.Begin()->_item;
     }
 
@@ -35,17 +35,14 @@ public:
     }
 
     //WOW I DIDN'T THINK THIS WOULD WORK
-
     template <class U>
-    friend ostream& operator<<(ostream& outs, const Stack<U>& l) {
-        node<U>* walker = l.stack.Begin();
-        while (walker != l.stack.End()) {
+    friend ostream& operator<<(ostream& outs, const Stack<U>& s) {
+        node<U>* walker = s.stack.Begin();
+        while (walker != s.stack.End()) {
             outs << " [" << walker->_item << "]";
             walker = walker->_next;
         }
-
         return outs;
-
     }
 
 private:

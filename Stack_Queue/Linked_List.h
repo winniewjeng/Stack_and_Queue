@@ -362,13 +362,5 @@ node<T>* LastNode(node<T>* head_ptr) {
     return walker;
 }
 
-//
-//template <typename T>
-//T& operator[](node<T>* head_ptr, int index) {
-//
-//    return 0;
-//
-//}
-
 #endif /* LINKED_LIST_H */
 
