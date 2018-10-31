@@ -59,55 +59,69 @@ public:
     }
 
     // pushes item to the rear
+
     void push(const T& item) {
 
         // declare a walker to traverse down the queue
         node<T>* walker = front;
-        
+
         // if the queue is empty, create a new node of capacity 1
-        if (this->front == nullptr) {
+        if (walker == rear) {
+            cout << "hey";
             insert_head(front, item);
-            front->_next = rear;
-        } 
-        // if queue is not empty, traverse down the queue
-        else {
-            while (walker != rear) {
-                // if walker's next is rear, insert item after walker. Else, keep walking
-                if (walker->_next == rear) {
-                    insert_after(front, walker, item);
-                    walker->_next = rear;
-                } else {
-                    walker = walker->_next;
-                }
+            //            walker->_next = rear;
+        } else {
+            // if queue is not empty, walk to the queue's end
+            while (walker->_next != rear) {
+                walker = walker->_next;
             }
+            // insert item there
+            insert_after(front, walker, item);
+            //            while(walker->_next != nullptr) {
+            //                walker = walker->_next;
         }
         //queue size enlarges by 1
-        size++;
+        this->size++;
     }
 
+
+
+
+
+
+
     //pop items from the front
+
     T pop() {
         // cannot pop an empty queue
         assert(front != nullptr);
-        
+
         //decrement the queue size
         size--;
         // return the item front of the queue
         return delete_head(front);
-        
-//        return front
-//        return stack.Delete(stack.Begin());
-        
     }
+
     T top() {
         // cannot check top of an empty queue
         assert(front != nullptr);
-        
+
         return front->_item;
     }
-    bool empty();
+
+    bool empty() {
+        return this->size == 0;
+    }
+
     template <class U>
-    friend ostream& operator<<(ostream& outs, const Queue<U>& q);
+    friend ostream& operator<<(ostream& outs, const Queue<U>& q) {
+        node<U>* walker = q.front;
+        while (walker != q.rear) {
+            outs << " [" << walker->_item << "]";
+            walker = walker->_next;
+        }
+        return outs;
+    }
 
 
 private:

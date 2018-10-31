@@ -13,14 +13,13 @@ void test_queue();
 
 int main(int argc, char** argv) {
 
-//    test_stack();
+    //    test_stack();
     test_queue();
     return 0;
 }
 
-
 void test_stack() {
-    
+
     Stack<int> s;
     for (int i = 0; i < 10; i++) {
         s.push(i);
@@ -36,11 +35,21 @@ void test_stack() {
         s.pop();
         cout << s << endl;
     }
-    
+
 }
 
 void test_queue() {
+
     Queue<int> q;
+    q.push(3);
+//    cout << q;
     q.push(4);
-    cout << q.top();
+    q.push(6);
+    q.push(7);
+    cout << q;
+//    q.pop();
+//    cout << q;
+    //push algo is faulty
+
+//    cout << q.top();
 }
