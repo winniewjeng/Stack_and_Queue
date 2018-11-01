@@ -15,10 +15,10 @@ void test_iterator_queue();
 int main(int argc, char** argv) {
 
     //    test_stack();
-//        test_queue();
-//    test_iterator_queue();
+    //        test_queue();
+    test_iterator_queue();
     return 0;
-    
+
 }
 
 void test_stack() {
@@ -65,37 +65,43 @@ void test_queue() {
 }
 
 void test_iterator_queue() {
-    
-    cout <<endl<<endl<< "=======================" << endl<<endl;
-    
-    cout<<endl<<endl<<"Testing a queue with iterator:"<<endl;
+
+    cout << endl << "=======================" << endl;
+
+    cout << endl << "Testing a queue with iterator:" << endl;
     Queue<int> q;
-    
+
     for (int i = 0; i < 10; i++) {
-        q.push(i);
+        q.push(i * 10);
+    }
+
+    Queue<int>::Iterator it; //a queue Iterator object
+    //    it = q.Begin();
+    //    cout << *it << endl;
+
+    //prefix works but not post fix
+    for (it = q.Begin(); it != q.End(); ++it) {
+        //looping through all the elements of List using the Iterator
+        cout << *it << " | ";
     }
     
-    Queue<int>::Iterator it; //a queue Iterator object
-//    it = q.Begin();
-//    cout<<*it<<endl;
-//    for (it=q.Begin(); it!=q.End(); it++){                         //postfix ++
-//        //looping through all the elements of List using the Iterator
-////        cout<<*it<<"|";
-//    }
+    
     //delete it;      //cannot be done.
     //delete it._ptr; //cannot be done.
-//    cout<<endl<<endl<<"Testing a list of strings:"<<endl;
-//    //
-//    string s[] = {string("Curly"), string("Moe"), string("Larry")};
-//    Queue<string> slist(s, 3);
-//    Queue<string>::Iterator sit;           //a List Itertor object
-//    for (sit=slist.Begin(); 
-//         sit!=slist.End(); 
-//         ++sit){                          //prefix ++
-//        //looping through all the elements of List using the Iterator
-//        cout<<*sit<<"|";
-//    }
 
-    cout<<endl;
-    cout <<endl<<endl<< "=======================" << endl<<endl;
+    cout << endl << "=======================" << endl;
+    cout << endl << endl << "Testing a list of strings:" << endl;
+
+    Queue<string> qstr;
+    qstr.push("A");
+    qstr.push("B");
+    qstr.push("C");
+
+    Queue<string>::Iterator it_str;
+    
+    for (it_str = qstr.Begin(); it_str != qstr.End(); ++ it_str) {
+        cout << *it_str << " | ";
+    }
+
+    cout << endl << "=======================" << endl << endl;
 }

@@ -18,8 +18,8 @@ public:
 
         //ctor
 
-//        Iterator(T* p = nullptr) : ptr(p) {
-//        }
+        Iterator(node<T>* p = nullptr) : ptr(p) {
+        }
 
         // return an iterator to the next location in the list  
 
@@ -32,21 +32,20 @@ public:
         T& operator*() {
             // assert ptr != nullptr
             assert(ptr);
-            return *ptr;
+            return ptr->_item;
         }
 
         // still don't know what this is for
 
-        T& operator*() const {
-            assert(ptr);
-            return *ptr;
-        }
+                node<T>& operator*() const {
+                    assert(ptr);
+                    return *ptr;
+                }
 
         // it++
 
         Iterator& operator++() {
             ptr = ptr->_next;
-            //ptr++; //NOOOOOOOOOOO!!!!
             return *this;
         }
 
@@ -56,7 +55,6 @@ public:
             Iterator hold;
             hold = it;
             it.ptr = it.ptr->_next;
-            //it.ptr++; //NOOOOOOOOOOO!!!!
             return hold;
         }
 
@@ -203,17 +201,19 @@ public:
     }
 
     //an iterator to the start of List
-//
-//    Iterator Begin() const {
-//        //C++ requires you to use the keyword typename when referring to the Iterator outside the class declaration
-//        return Iterator(front);
-//    }
-//
-//    //an iterator to the end of List
-//
-//    Iterator End() const {
-//        return Iterator(rear);
-//    }
+    //
+
+    Iterator Begin() const {
+        //C++ requires you to use the keyword typename when referring to the Iterator outside the class declaration
+
+        return Iterator(front);
+    }
+
+    //an iterator to the end of List
+
+    Iterator End() const {
+        return Iterator(rear);
+    }
 
 private:
     node<T>* front;
