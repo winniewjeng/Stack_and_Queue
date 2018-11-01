@@ -42,16 +42,16 @@ public:
                     return *ptr;
                 }
 
-        // it++
+        // ++it
 
         Iterator& operator++() {
             ptr = ptr->_next;
             return *this;
         }
 
-        // ++it
+        // it++
 
-        friend Iterator operator++(Iterator it, int unused) {
+        friend Iterator operator++(Iterator& it, int unused) {
             Iterator hold;
             hold = it;
             it.ptr = it.ptr->_next;

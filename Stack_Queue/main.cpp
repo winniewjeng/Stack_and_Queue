@@ -11,37 +11,47 @@ using namespace std;
 void test_stack();
 void test_queue();
 void test_iterator_queue();
+void test_iterator_stack();
 
 int main(int argc, char** argv) {
 
-    //    test_stack();
-    //        test_queue();
-    test_iterator_queue();
+    //test_stack();
+    //test_queue();
+    //test_iterator_queue();
+    test_iterator_stack();
     return 0;
 
 }
 
 void test_stack() {
+    
+    cout << endl << "=======================" << endl;
 
-    Stack<int> s;
-    for (int i = 0; i < 10; i++) {
-        s.push(i);
-    }
-    cout << s << endl;
-    cout << "what is pop: " << s.pop();
-    cout << endl;
-    cout << s << endl;
-    cout << "What is top: " << s.top();
-    cout << endl;
-    //popping frenzy to test s.empty()
-    while (!s.empty()) {
-        s.pop();
-        cout << s << endl;
-    }
+    cout << endl << "Testing generic stack:" << endl;
+
+//    Stack<int> s;
+//    for (int i = 0; i < 10; i++) {
+////        s.push(i);
+//    }
+//    cout << s << endl;
+//    cout << "what is pop: " << s.pop();
+//    cout << endl;
+//    cout << s << endl;
+//    cout << "What is top: " << s.top();
+//    cout << endl;
+////    popping frenzy to test s.empty()
+//    while (!s.empty()) {
+//        s.pop();
+//        cout << s << endl;
+//    }
 
 }
 
 void test_queue() {
+    
+    cout << endl << "=======================" << endl;
+
+    cout << endl << "Testing generic queue:" << endl;
 
     Queue<int> q;
     // populate the queue by pushing items in
@@ -84,8 +94,8 @@ void test_iterator_queue() {
         //looping through all the elements of List using the Iterator
         cout << *it << " | ";
     }
-    
-    
+
+
     //delete it;      //cannot be done.
     //delete it._ptr; //cannot be done.
 
@@ -93,15 +103,44 @@ void test_iterator_queue() {
     cout << endl << endl << "Testing a list of strings:" << endl;
 
     Queue<string> qstr;
-    qstr.push("A");
-    qstr.push("B");
-    qstr.push("C");
-
+    qstr.push("Abel");
+    qstr.push("Blake");
+    qstr.push("Corrie");
+    qstr.push("Donovan");
+    qstr.push("Edmund");
     Queue<string>::Iterator it_str;
-    
-    for (it_str = qstr.Begin(); it_str != qstr.End(); ++ it_str) {
+
+    for (it_str = qstr.Begin(); it_str != qstr.End(); it_str++) {
         cout << *it_str << " | ";
+        *it_str = "X";
+        cout << *it_str << " | ";
+        //        cin.get();
     }
 
     cout << endl << "=======================" << endl << endl;
+}
+
+void test_iterator_stack() {
+    
+    cout << endl << "=======================" << endl;
+
+    cout << endl << "Testing a stack with iterator:" << endl;
+    Stack<int> s;
+
+    for (int i = 0; i < 10; i++) {
+        s.push(i * 10);
+    }
+    
+    Stack<int>::Iterator it;
+//    Stack<int>::Iterator it; //a stack Iterator object
+    //    it = q.Begin();
+    //    cout << *it << endl;
+
+    //prefix works but not post fix
+//    for (it = s.Begin(); it != s.End(); ++it) {
+//        //looping through all the elements of List using the Iterator
+//        cout << *it << " | ";
+//    }
+
+
 }
