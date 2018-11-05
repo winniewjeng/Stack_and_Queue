@@ -3,7 +3,6 @@
 #define QUEUE_H
 
 #include "Linked_List.h"
-//#include "Simple_List.h" //???
 #include <iostream>
 #include <cassert>
 using namespace std;
@@ -11,63 +10,6 @@ using namespace std;
 template <typename T>
 class Queue {
 public:
-
-    class Iterator {
-    public:
-        friend class Queue;
-
-        //ctor
-
-        Iterator(node<T>* p = nullptr) : ptr(p) {
-        }
-
-        // return an iterator to the next location in the list  
-
-        Iterator next() {
-            return Iterator(ptr->_next);
-        }
-
-        //return the dereferenced item
-
-        T& operator*() {
-            // assert ptr != nullptr
-            assert(ptr);
-            return ptr->_item;
-        }
-
-        // still don't know what this is for
-
-                node<T>& operator*() const {
-                    assert(ptr);
-                    return *ptr;
-                }
-
-        // ++it
-
-        Iterator& operator++() {
-            ptr = ptr->_next;
-            return *this;
-        }
-
-        // it++
-
-        friend Iterator operator++(Iterator& it, int unused) {
-            Iterator hold;
-            hold = it;
-            it.ptr = it.ptr->_next;
-            return hold;
-        }
-
-        //it != it
-
-        friend bool operator!=(const Iterator& left, const Iterator& right) {
-            return left.ptr != right.ptr;
-        }
-
-
-    private:
-        node<T>* ptr; //pointer being encapsulated
-    }; // end of iterator class
 
     //constructor
 
@@ -140,19 +82,7 @@ public:
             //resetting rear
             rear = LastNode(front);
         }
-
-        //        else {
-        //            // if queue is not empty, walk to the queue's end
-        //            //NOOOOOOOO!!!!
-        //            while (walker->_next != rear) {
-        //                walker = walker->_next;
-        //            }
-        //            // insert item there
-        //            //this is what rear is for: 
-        //            //insert_after(rear, rear, item);
-        //            insert_after(front, walker, item);
-        //        }
-
+        
         //queue size enlarges by 1
         this->size++;
     }
@@ -198,21 +128,6 @@ public:
             walker = walker->_next;
         }
         return outs;
-    }
-
-    //an iterator to the start of List
-    //
-
-    Iterator Begin() const {
-        //C++ requires you to use the keyword typename when referring to the Iterator outside the class declaration
-
-        return Iterator(front);
-    }
-
-    //an iterator to the end of List
-
-    Iterator End() const {
-        return Iterator(rear);
     }
 
 private:
